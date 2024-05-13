@@ -8,9 +8,6 @@ import java.sql.ResultSet;
 
 import com.atr.login.beans.User;
 import com.atr.login.utils.ConnectionUtils;
-import com.mysql.cj.protocol.Resultset;
-import com.mysql.cj.x.protobuf.MysqlxCrud.Collection;
-import com.mysql.cj.xdevapi.PreparableStatement;
 
 public class UserDaoImpl implements UserDao{
 
