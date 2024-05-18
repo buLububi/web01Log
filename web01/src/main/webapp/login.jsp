@@ -113,7 +113,12 @@
     
     }
 </style>
-
+<script>
+function clearLoginMsg(){
+	var spanEle=document.getElementById("Login_span");
+	spanEle.innerHTML="";
+}
+</script>
 <body>
     <!-- 登录界面 -->
     <div>
@@ -121,31 +126,9 @@
         <form action="login" name="log" method="post" target="_blank">
             <h3>用户登录</h3>
             <font>用户名：</font>
-            <input type="text" name="username" id="username" placeholder="请输入用户名"><br />
+            <input type="text" name="username" id="username" placeholder="请输入用户名" onfocus="clearLoginMsg();"><br />
            
-            <!-- JSP的隐含对象：
-            out(JspWriter):相当于response.getWriter()获取的对象，用于在页面中显示信息
-            request(HttpServletRequest):HttpServletRequest对象
-            response(HttpServletResponse):HttpServletResonse对象
-            config(ServletConfig):对应Servlet中的ServletConfig对象
-            application(ServletContext):SercletContext对象
-            session(HttpSession):HttpSession对象
-            page(Object):对应当前的Servlet类,实际上就是this
-            pageContext(PageContext):当前页面的上下文，也是一个域对象
-            exception(Throwable):错误页面中的异常对象 -->
-            
-            
-            
-           <%--  EL表达式： ${EL表达式(可完成取值,简单的判断，简单的运算等)}
-            JSP内置的表达式语言，用于替代JSP<%= %>在页面做输出动作，它仅仅用来读取数据 而不能进行修改
-                                        有则输出数据，无则什么都不输出
-                EL取值的四个域：
-                pageScope
-                requestScope
-                sessionScope
-                applicationScope                        
-                 EL从这四个域中取数据，需要指定域，不指定时默认从上到下去找                                  --%>
-            <span>${requestScope.login_meg}</span><br />
+            <span id="Login_span">${requestScope.login_meg}</span><br />
             <font>密码：</font>
             <input type="password" name="password" id="password" placeholder="请输入密码"><br />
             <div class="cl2">
