@@ -128,7 +128,7 @@ function clearLoginMsg(){
             <font>用户名：</font>
             <input type="text" name="username" id="username" placeholder="请输入用户名" onfocus="clearLoginMsg();"><br />
            
-            <span id="Login_span">${requestScope.login_meg}</span><br />
+            <span id="Login_span">${requestScope.login_msg}</span><br />
             <font>密码：</font>
             <input type="password" name="password" id="password" placeholder="请输入密码"><br />
             <div class="cl2">

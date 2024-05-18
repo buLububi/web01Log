@@ -10,13 +10,19 @@
     <url-pattern>/login</url-pattern>
   </servlet-mapping>
   <servlet>
-    <description></description>
-    <display-name>RegistServlet</display-name>
     <servlet-name>RegistServlet</servlet-name>
     <servlet-class>com.atr.login.servlet.RegistServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>RegistServlet</servlet-name>
     <url-pattern>/regist</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>CheckUsernameServlet</servlet-name>
+    <servlet-class>com.atr.login.servlet.CheckUsernameServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CheckUsernameServlet</servlet-name>
+    <url-pattern>/checkUsername</url-pattern>
   </servlet-mapping>
 </web-app>

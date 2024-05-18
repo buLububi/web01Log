@@ -57,7 +57,7 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 		 */
 		
 		//转发之前，绑定数据，将上一格jsp处理的数据绑定到request对象
-		req.setAttribute("login_meg", "用户名或密码错误!!!");
+		req.setAttribute("login_msg", "用户名或密码错误!!!");
 		//获取转发器
 		RequestDispatcher rd=req.getRequestDispatcher("login.jsp");
 		//开始转发

@@ -27,7 +27,7 @@ public class UserDaoImpl implements UserDao{
 			
 			PreparedStatement ps=conn.prepareStatement(sql);
 			ps.setString(1,username);
-			
+			ps.setString(2, password);
 			ResultSet rs=ps.executeQuery();
 			if(rs.next()) {
 				u=new User();
@@ -87,7 +87,7 @@ public class UserDaoImpl implements UserDao{
 		try {
 			Connection conn=ConnectionUtils.getConn();
 			
-			String sql="insert into regist_tb(username,password) values(?,?)";
+			String sql="insert into tb1_user(username,password) values(?,?)";
 			PreparedStatement ps=conn.prepareStatement(sql);
 			ps.setString(1, username);
 			ps.setString(2, password);
