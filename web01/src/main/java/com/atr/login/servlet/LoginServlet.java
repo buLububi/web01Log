@@ -3,6 +3,8 @@ package com.atr.login.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import org.apache.catalina.Server;
+
 import com.atr.login.beans.User;
 import com.atr.login.dao.UserDao;
 import com.atr.login.dao.UserDaoImpl;
@@ -48,8 +50,20 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 	User user=(User) userdao.getUserByUsernameAndPassword(username, password);
 	
 	if(user==null) {
-		
-		resp.sendRedirect("login.html");
+		/*
+		 * JSP:Java Server Pages,运行在Java服务器（如Tomcat)的页面,本质上是一个Servlet
+		 * 它的构成有HTML,Java代码,JSP标签
+		 * jsp页面执行原理：
+		 * java片段照搬到控制台
+		 * html、css、js、表达式  通过输出流out.writer()往界面上写，因此jsp更适用于页面显示
+		 * 
+		 * 重定向：浏览器第一次请求给到服务器端，比如登录，浏览器发现登陆失败，就会返回一个302状态码和url地址，
+		 *         浏览器根据返回来的url地址，进行第二次对服务器新的访问，在这个过程中，浏览器发送了两次请求，
+		 *         每一次请求都会有自己对应的请求对象与响应对象（可以重定向到服务器外部）
+		 *  转发：浏览器发来一次请求，进入login servlet处理，login servlet只会判断登陆成功还是失败，不擅长把结果反馈出来，
+		 *  		他就转发给jsp界面，jsp就把这个错误信息显示出来，整个过程只发生了一次请求，在服务器内部进行了一次转发，只用到一个请求对象和一个响应对象
+		 */
+		resp.sendRedirect("login.jsp");
 		
 	}
 	else {
