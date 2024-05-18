@@ -21,11 +21,6 @@ import jakarta.servlet.http.HttpServletResponse;
 //service:根据具体的请求去调用对应的doGet或doPost方法
 
 public class LoginServlet extends HttpServlet{
-//	@Override
-//		protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//			// TODO Auto-generated method stub
-//			super.service(req,resp);
-//		}
 
 @Override
 protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -53,153 +48,14 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 	User user=(User) userdao.getUserByUsernameAndPassword(username, password);
 	
 	if(user==null) {
-		//登陆失败
-//		out.println("<h1><font color='red'>Login fail  登陆失败！</font></h1>");
-		String str="<!DOCTYPE html>"+
-		"<html lang='en'>"+
-		"<head>"+
-		    "<meta charset='UTF-8'>"+
-		    "<meta name='viewport' content='width=device-width, initial-scale=1.0'>"+
-		    "<title>用户登录</title>"+
-		"</head>"+
-		"<style>"+
-		   " * {"+
-		       " padding: 0;"+
-		        "margin: 0;"+
-		   " }"+
-
-		   " div {"+
-		      "  width: 480px;"+
-		      "  height: 677px;"+
-
-		      "  background-color: #08adff;"+
-
-		   " }"+
-
-		  "  h3 {"+
-		       " font-weight: 400;"+
-		       " font-family: 'Times New Roman', Times, serif;"+
-		       " height: 150px;"+
-
-		       " padding: 100px 100px 100px 100px;"+
-		       " font-size: 40px;"+
-		      "  text-align: center;"+
-		       " line-height: 200px;"+
-		  "  }"+
-
-		  "  body {"+
-		       " width: 1200px;"+
-		       " height: 697px;"+
-		       " background-image: skyblue;"+
-		       " background-repeat: no-repeat;"+
-		       " background-position: center;"+
-		       " background-size: cover;"+
-
-		    "}"+
-
-		    "font {"+
-		       " display: inline-block;"+
-		       " font-family: 'Times New Roman', Times, serif;"+
-		       " font-size: 20px;"+
-		        "text-align: center;"+
-		       " width: 150px;"+
-		       " height: 40px;"+
-		       " line-height: 40px;"+
-
-		   " }"+
-
-		   " input {"+
-		       " display: inline-block;"+
-		       " width: 238px;"+
-		       " height: 33px;"+
-		       " padding: 0;"+
-		      "  border: 0;"+
-		       " border-left: 0;"+
-		      "  padding: 0 9px;"+
-		     "   border-radius: 8px;"+
-		  "  }"+
-
-		    "div .cl2 {"+
-		       " height: 245px;"+
-		      "  text-align: center;"+
-
-		   " }"+
-
-		   " .submit {"+
-		     "   display: block;"+
-		     "   border: 0;"+
-		     "   width: 200px;"+
-		      "  height: 40px;"+
-		     "   border-radius: 0;"+
-		     "   margin: 10px 50px 20px 50px;"+
-		     "   position: absolute;"+
-		     "   left: 71px;"+
-		     "   top: 569px;"+
-		    "}"+
-
-		   " .submit:hover,"+
-		   " .reset:hover {"+
-		   "     background-color: #9cd3ef;"+
-		 "   }"+
-
-		 "   .submit:active,"+
-		  "  reset:active {"+
-		   "     color: red;"+
-
-		  "  }"+
-
-		    ".reset {"+
-		    "    display: block;"+
-		    "    border: 0;"+
-		    "    width: 200px;"+
-		    "    height: 40px;"+
-		     "   border-radius: 0;"+
-		     "   margin: 10px 50px 20px 50px;"+
-		      "  position: absolute;"+
-		     "   left: 71px;"+
-		    "    top: 620px;"+
-		   " }"+
-		"</style>"+
-
-		"<body>"+
 		
-		"    <div>"+
-
-		  "      <form action='login' name='log' method='post' target='_blank'>"+
-		           " <h3>用户登录</h3>"+
-		          "  <font>用户名：</font>"+
-		          "  <input type='text' name='username' id='username' placeholder='请输入用户名' value="+username+"><span><font color='red'>用户名或密码输入错误</font></span><br />"+
-		           " <font>密码：</font>"+
-		          "  <input type='password' name='password' id='password' placeholder='请输入密码'><br />"+
-		         "   <div class='cl2'>"+
-		            "    <input type='submit' value='登录' class='submit'>"+
-		            "    <input type='reset' value='重置' class='reset'>"+
-		         "   </div>"+
-
-		       " </form>"+
-		  " </div>"+
-		"</body>"+
-
-	"	</html>";
-		out.println(str);
+		resp.sendRedirect("login.html");
+		
 	}
 	else {
 		//登陆成功
 		out.println("<h1><font color='green'> Login Success  登陆成功！</font></h1>");
 	}
 	
-//	if("ryx".equalsIgnoreCase(username)&&"123456".equalsIgnoreCase(password)) {
-////		登陆成功
-////		通过响应对象，给客户端响应数据
-//		out.println("<h1><font color='green'> Login Success  登陆成功！</font></h1>");
-//		out.println("<p>您的用户名是: " + username + "</p>");
-//	    out.println("<p>您的密码是: " + password + "</p>");
-//	}
-//	else {
-////		登陆失败
-//		out.println("<h1><font color='red'>Login fail  登陆失败！</font></h1>");
-//		out.println("<p>您的用户名是: " + username + "</p>");
-//	    out.println("<p>您的密码是: " + password + "</p>");
-//	}
 	}
 }
