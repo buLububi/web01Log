@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import javax.swing.JScrollBar;
 
 import com.atr.login.beans.User;
 import com.atr.login.utils.ConnectionUtils;
@@ -81,7 +82,8 @@ public class UserDaoImpl implements UserDao{
 		}
 		return null;
 	}
-
+	
+	
 	@Override
 	public void insertUser(String username, String password) {
 		try {
