@@ -45,6 +45,7 @@ public class CheckUsernameServlet extends HttpServlet {
 			// 不可用
 			msg="1";
 		}
+		
 		response.setContentType("text/html;charset=utf-8");
 		
 		response.getWriter().println(msg);

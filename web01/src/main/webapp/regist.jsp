@@ -27,27 +27,26 @@
     	
     	return xhr;
     }
-    function  checkUsername(){
-    	var username=document.getElementById("username").value;
-    	//   发送异步请求校验
-    	var xhr=getXhr();
-    	//设置请求信息
-    	xhr.open("get","checkUsername?username="+username,true);
-    	// 发送请求
-    	xhr.send();
-    	// 监听readyState的状态
-    	xhr.onreadystatechange=function(){ // 匿名函数
-    		if(xhr.readyState == 4){ // 响应处理完成
-    			if(xhr.status == 200){ // 处理正确
-    				//获取服务端响应回来的数据
-    				var msg=xhr.responseText;
-    			 	// 将信息显示到用户名输入框后面
-    			 	document.getElementById("regist_span").innerHTML=msg;
-    			}
-    			
-    		}
-    	}
-    	
+    function checkUsername() {
+        var username = document.getElementById("username").value;
+        var xhr = getXhr();
+        xhr.open("post", "RegistServlet", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4) {
+                if (xhr.status == 200) {
+                    var jsonResponse = JSON.parse(xhr.responseText);
+                    if (jsonResponse.status === "error") {
+                        document.getElementById("regist_span").innerHTML = jsonResponse.message;
+                    } else if (jsonResponse.status === "success") {
+                        document.getElementById("regist_span").innerHTML = jsonResponse.message;
+                        // 可能需要重定向到登录页面或执行其他操作
+                        // window.location.href = "login.jsp";
+                    }
+                }
+            }
+        };
+        xhr.send("username=" + encodeURIComponent(username) + "&password=" + encodeURIComponent(password));
     }
     $(function(){
     	var usernameFlag=false;
